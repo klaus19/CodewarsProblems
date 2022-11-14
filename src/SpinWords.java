@@ -17,11 +17,12 @@ public class SpinWords {
             list.add(str[i]);
         }
           for (int j=0;j<list.size();j++) {
-              char[] ch = list.get(j).toCharArray();
-              if (ch.length >= 5) {
+              if (list.get(j).length()>= 5) {
+                  char[] ch = list.get(j).toCharArray();
                   for (int k = ch.length - 1; k >= 0; k--) {
                       rev += ch[k];
                       list.set(j, rev);
+
                   }
               }
           }
