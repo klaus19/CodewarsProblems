@@ -1,35 +1,42 @@
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class SpinWords {
 
     public String getSpinWords(String sentence) {
-        //TODO: Code stuff here
-
 
         String rev = "";
         String final_str="";
 
         String[] str = sentence.split("\\s+"); //str =["Hello","lion"]
-        for (int i=0;i<str.length;i++){
-           if (str[i].length()>=5){
-               String word  = str[i];
-               for (int j=word.length()-1;j>=0;--j){
-                   char[]ch = word.toCharArray();
-                   rev+=ch[j];
-                   final_str+=rev+""+str;
-               }
-           }else{
-               final_str+=sentence;
-           }
+        //create a aRRAYlISST
+        List<String>list = new ArrayList<>();
+        for (int i=0;i<str.length;i++) {
+            list.add(str[i]);
         }
+          for (int j=0;j<list.size();j++) {
+              char[] ch = list.get(j).toCharArray();
+              if (ch.length >= 5) {
+                  for (int k = ch.length - 1; k >= 0; k--) {
+                      rev += ch[k];
+                      list.set(j, rev);
+                  }
+              }
+          }
+
+        String becca = list.stream().map(Object::toString)
+                .collect(Collectors.joining(" "));
+        final_str+=becca;
+
+
         return final_str;
     }
 
     public static void main(String[] args) {
         SpinWords sp = new SpinWords();
-        String st = "Hello lion";
+        String st = "Batty is forever";
         System.out.println(sp.getSpinWords(st));
     }
 }
