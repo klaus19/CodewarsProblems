@@ -1,7 +1,7 @@
-import java.lang.reflect.Array;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 public class SpinWords {
 
@@ -22,13 +22,17 @@ public class SpinWords {
                   for (int k = ch.length - 1; k >= 0; k--) {
                       rev += ch[k];
                       list.set(j, rev);
-
                   }
+                  rev="";
               }
           }
 
-        String becca = list.stream().map(Object::toString)
-                .collect(Collectors.joining(" "));
+        StringBuilder sb = new StringBuilder();
+        for (String s:list){
+            sb.append(s);
+            sb.append(" ");
+        }
+        String becca = sb.toString();
         final_str+=becca;
 
 
@@ -38,6 +42,8 @@ public class SpinWords {
     public static void main(String[] args) {
         SpinWords sp = new SpinWords();
         String st = "Batty is forever";
+        String s1 = "you are love Nikita";
         System.out.println(sp.getSpinWords(st));
+        System.out.println(sp.getSpinWords(s1));
     }
 }
