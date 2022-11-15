@@ -6,9 +6,11 @@ public class EqualCount {
         int count_X = 0;
 
         for (int i = 0; i < str.length(); i++) {
-            if (str.charAt(i) == 'o') {
+            char[]ch = str.toLowerCase().toCharArray();
+            if (ch[i] == 'o') {
+
                 count_O++;
-            } else if (str.charAt(i) == 'x') {
+            } else if (ch[i] == 'x') {
                 count_X++;
             }
         }
